@@ -1,8 +1,10 @@
 const { Circle, Triangle, Square } = require("./lib/shapes.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
+const shapes = require("./lib/shapes.js")
 
-inquirer.prompt([
+const questions = () => {
+  return inquirer.prompt([
   {
     type: "input",
     message: "Input 3 alphabetical characters for your logo.",
@@ -26,30 +28,29 @@ inquirer.prompt([
     name: "shapeColor",
     choices: ["Red", "Blue", "Yellow"],
   },
-]);
+])};
 
-function writeFile(fileName, data) {
-    fs.writeFile(fileName, data, error => {
-      if(error){
-        return console.log(error);
-      } else {
-        return console.log("Successfully created Logo!")
-      }
-    });
-  }
-  
-  function init() {
-    return questions ()
-    .then((answers) => {
-      return generateMarkdown(answers);
-    })
-    .then((data) => {
-      return writeFile('',data);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  };
-  
-  init();
-  module.exports = { Circle, Triangle, Square }
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, error => {
+    if(error){
+      return console.log(error);
+    } else {
+      return console.log("Successfully created Logo!")
+    }
+  });
+}
+
+function init() {
+  return questions ()
+  .then((answers) => {
+    return shapes(answers);
+  })
+  .then((data) => {
+    return writeToFile('logo.svg',data);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+};
+
+init();
