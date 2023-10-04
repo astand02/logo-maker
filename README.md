@@ -21,6 +21,12 @@
   ## Walk-through Video
 
   ![SVG logo maker](<examples/Untitled_ Oct 3, 2023 11_39 AM.gif>)
+  
+  Results should look similar to the images below,
+  
+ ![Alt text](examples/svgExample.png) 
+ ![Alt text](examples/svgExample2.png)
+ ![Alt text](examples/svgExample3.png)
 
   ## Questions 
   Feel free to contact me directly at standridgealison@gmail.com for more information about this project. 
